@@ -1,6 +1,5 @@
 *.pyc
 *.pem
 *.db
-venv
-tmp
-
+venv/
+tmp/
