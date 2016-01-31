@@ -31,3 +31,5 @@ if os.environ.get('HEROKU') is not None:
     app.logger.addHandler(stream_handler)
     app.logger.setLevel(logging.INFO)
     app.logger.info('Homepage server startup')
+
+from . import models, errors
