@@ -5,4 +5,10 @@ from home.frontend import frontend
 @frontend.route('/', methods=['GET'])
 @frontend.route('/index', methods=['GET'])
 def index():
-    return render_template('index.html')
+    return render_template('index.html',
+                            title='Home')
+
+@frontend.route('/about')
+def about():
+    return render_template('about.html',
+                            title='About This Page')
