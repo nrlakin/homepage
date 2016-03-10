@@ -1,0 +1,15 @@
+ssh apps@$DO_HOST_IP <<'ENDSSH'
+echo "Collecting security updates..."
+sudo apt-get update
+echo "Pulling latest from git..."
+cd homepage
+git pull
+echo "Updating pip..."
+venv/bin/pip install --upgrade pip
+echo "Updating dependencies..."
+venv/bin/pip install -r requirements.txt --upgrade
+echo "Restarting server..."
+exit
+sudo service nginx restart
+echo "Done."
+ENDSSH
