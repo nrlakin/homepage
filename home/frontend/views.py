@@ -20,4 +20,4 @@ def get_resume():
 
 @frontend.route('/download/<filename>')
 def download(filename):
-    return send_file('/'.join(['static','misc', filename]))
+    return send_file('/'.join(['static','download', filename]))
