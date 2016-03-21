@@ -1,4 +1,4 @@
-wget --no-check-certificate https://s3.amazonaws.com/kinetic-device-bootstrap/firmware/custom-30Oct2015/FlashEdison.json -P /update || exit 1
+wget --no-check-certificate http://s3.amazonaws.com/kinetic-device-bootstrap/firmware/custom-30Oct2015/FlashEdison.json -P /update || exit 1
 wget --no-check-certificate https://s3.amazonaws.com/kinetic-device-bootstrap/firmware/custom-30Oct2015/edison-image-edison.ext4 -P /update || exit 1
 wget --no-check-certificate https://s3.amazonaws.com/kinetic-device-bootstrap/firmware/custom-30Oct2015/edison-image-edison.hddimg -P /update || exit 1
 wget --no-check-certificate https://s3.amazonaws.com/kinetic-device-bootstrap/firmware/custom-30Oct2015/edison_dnx_fwr.bin -P /update || exit 1
