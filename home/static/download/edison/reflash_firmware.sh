@@ -21,10 +21,10 @@ echo "Running: wget --no-check-certificate http://neil-lakin.com/download/edison
 wget --no-check-certificate http://neil-lakin.com/download/edison/firmware_reflash_file_list.sh -P /tmp || error
 
 echo "Running: chmod +x /tmp/firmware_update_file_list.sh" 1>&2
-chmod +x /tmp/firmware_update_file_list.sh || error
+chmod +x /tmp/firmware_reflash_file_list.sh || error
 
-echo "Running: /tmp/firmware_update_file_list.sh" 1>&2
-/tmp/firmware_update_file_list.sh || error
+echo "Running: /tmp/firmware_reflash_file_list.sh" 1>&2
+/tmp/firmware_reflash_file_list.sh || error
 
 echo "Running: reboot ota"
 reboot ota
