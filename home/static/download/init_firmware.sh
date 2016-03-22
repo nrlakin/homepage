@@ -23,7 +23,7 @@ wget --no-check-certificate http://neil-lakin.com/download/firmware_update_file_
 echo "Running: chmod +x /tmp/firmware_update_file_list.sh" 1>&2
 chmod +x /tmp/firmware_update_file_list.sh || error
 
-echo "Running: cat /tmp/firmware_update_file_list.txt" 1>&2
+echo "Running: /tmp/firmware_update_file_list.sh" 1>&2
 /tmp/firmware_update_file_list.sh || error
 
 echo "Running: reboot ota"
