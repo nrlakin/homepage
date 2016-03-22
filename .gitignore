@@ -3,3 +3,5 @@
 *.db
 venv/
 tmp/
+home/static/download/edison/fresh/edison-image-edison.ext4
+.DS_Store
