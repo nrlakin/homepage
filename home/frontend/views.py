@@ -20,4 +20,5 @@ def get_resume():
 
 @frontend.route('/download/<path:filename>')
 def download(filename):
+    flash("Downloading " + '/'.join(['static','download', filename]))
     return send_file('/'.join(['static','download', filename]))
