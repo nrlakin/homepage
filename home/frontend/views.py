@@ -18,6 +18,6 @@ def get_resume():
     return render_template('resume.html',
                             title='Resume')
 
-@frontend.route('/download/<filename>')
+@frontend.route('/download/<path:filename>')
 def download(filename):
     return send_file('/'.join(['static','download', filename]))
