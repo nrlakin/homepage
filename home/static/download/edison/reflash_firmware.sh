@@ -26,7 +26,7 @@ chmod +x /tmp/firmware_reflash_file_list.sh || error
 echo "Running: /tmp/firmware_reflash_file_list.sh" 1>&2
 /tmp/firmware_reflash_file_list.sh || error
 
-echo "Running: reboot ota"
+echo "Running: reboot ota" 1>&2
 reboot ota
 
 echo "Running: umount /update" 1>&2
