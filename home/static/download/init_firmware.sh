@@ -18,16 +18,13 @@ echo "Running: rm -rf /update/*" 1>&2
 rm -rf /update/* || error
 
 echo "Running: wget --no-check-certificate http://neil-lakin.com/download/firmware_update_file_list.sh -P /tmp" 1>&2
-wget --no-check-certificate http://neil-lakin.com/download/firmware_update_file_list.sh -P /tmp || error
+wget --no-check-certificate http://neil-lakin.com/download/firmware_update_file_list.sh || error
 
 echo "Running: chmod +x /tmp/firmware_update_file_list.sh" 1>&2
-chmod +x /tmp/firmware_update_file_list.sh || error
+chmod +x firmware_update_file_list.sh || error
 
 echo "Running: /tmp/firmware_update_file_list.sh" 1>&2
-/tmp/firmware_update_file_list.sh || error
-
-echo "Running: reboot ota"
-reboot ota
+./firmware_update_file_list.sh || error
 
 echo "Running: umount /update" 1>&2
 umount /update || error
@@ -35,6 +32,8 @@ umount /update || error
 echo "Running: rmdir /update" 1>&2
 rmdir /update || error
 
+echo "Running: reboot ota" 1>&2
+reboot ota
 # SEE COMMENT ABOVE
 #echo "Running: modprobe g_multi" 1>&2
 #/sbin/modprobe g_multi || error
