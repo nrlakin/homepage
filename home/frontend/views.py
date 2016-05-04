@@ -1,6 +1,10 @@
-from flask import render_template, flash, redirect, send_file, url_for
+from flask import render_template, flash, redirect, send_file, url_for, jsonify
 from home import app
 from home.frontend import frontend
+
+@frontend.route('/test_api', methods=['GET'])
+def test_api():
+    return jsonify({"message": "hello!"})
 
 @frontend.route('/', methods=['GET'])
 @frontend.route('/index', methods=['GET'])
