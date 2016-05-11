@@ -2,7 +2,7 @@ from flask import render_template, flash, redirect, send_file, url_for, jsonify
 from home import app, redis_store
 from home.frontend import frontend
 
-FINISH_COUNT = 100
+FINISH_COUNT = 60
 
 @frontend.route('/runner/<runner_name>', methods=['POST'])
 def update_runner(runner_name):
