@@ -25,3 +25,6 @@ MAIL_USE_TLS = False
 MAIL_USE_SSL = True
 MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
 MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+
+TWILIO_SID = os.environ.get('TWILIO_SID')
+TWILIO_TOKEN = os.environ.get('TWILIO_TOKEN')

@@ -1,8 +1,16 @@
 from flask import render_template, flash, redirect, send_file, url_for, jsonify
-from home import app, redis_store
+from home import app, redis_store, twilio
 from home.frontend import frontend
 
 FINISH_COUNT = 60
+
+@frontend.route('/slaptext/<phone_num_str>', methods=['POST'])
+def send_sms_slap(phone_num_str):
+    body='\xF0\x9F\x98\xA7\xF0\x9F\x91\x8B'
+    message = twilio.messages.create(to="+1"+phone_num_str,
+                                     from_="+15412348051",
+                                     body=body)
+    return jsonify({"message": "sent slap"}), 201
 
 @frontend.route('/runner/<runner_name>', methods=['POST'])
 def update_runner(runner_name):

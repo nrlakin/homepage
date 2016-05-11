@@ -2,6 +2,7 @@ import os
 from flask import Flask
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.redis import FlaskRedis
+from twilio.rest import TwilioRestClient
 # from config import basedir
 
 app = Flask(__name__)
@@ -10,6 +11,8 @@ app.config.from_object('config')
 
 db = SQLAlchemy(app)
 redis_store = FlaskRedis(app)
+
+twilio = TwilioRestClient(app.config['TWILIO_SID'], app.config['TWILIO_TOKEN'])
 
 # from home.api import api as api_module
 from home.frontend import frontend as frontend_module
