@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% if title  %}
+    <title> {{ title }} </title>
+    {% else %}
+    <title> SlapDash </title>
+    {% endif %}
+    <link href="/static/css/bootstrap-social.css" rel="stylesheet" media="screen">
+    <link href="/static/css/font-awesome.min.css" rel="stylesheet" media="screen">
+    <!--<link href="/static/css/bootstrap-responsive.min.css" rel="stylesheet">-->
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script language="javascript" type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.0/p5.js"></script>
+    <script language="javascript" type="text/javascript" src="/static/js/slapdash.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+    {% block content %}{% endblock %}
+  </body>
+</head>
+</html>

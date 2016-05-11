@@ -29,7 +29,7 @@ def test_api():
 
 @frontend.route('/test_post', methods=['POST'])
 def test_post():
-    return 201, jsonify({"message": "posted!"})
+    return jsonify({"message": "posted!"}), 201
 
 @frontend.route('/', methods=['GET'])
 @frontend.route('/index', methods=['GET'])

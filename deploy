@@ -9,8 +9,7 @@ venv/bin/pip install --upgrade pip
 echo "Updating dependencies..."
 venv/bin/pip install -r requirements.txt --upgrade
 echo "Restarting server..."
-sudo stop homepage
-sudo start homepage
+sudo service homepage restart
 sudo service nginx restart
 echo "Done."
 ENDSSH
