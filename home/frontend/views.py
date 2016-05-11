@@ -2,6 +2,8 @@ from flask import render_template, flash, redirect, send_file, url_for, jsonify
 from home import app, redis_store
 from home.frontend import frontend
 
+FINISH_COUNT = 100
+
 @frontend.route('/runner/<runner_name>', methods=['POST'])
 def update_runner(runner_name):
     state = redis_store.get('state')
@@ -9,19 +11,39 @@ def update_runner(runner_name):
         redis_store.set(runner_name, 0)
         redis_store.sadd('runners', runner_name)
     elif state == 'racing':
-        redis_store.incr(runner_name)
-    return jsonify({"message": runner_name+"+1"})
+        print "racing"
+        if redis_store.sismember('runners', runner_name)==1:
+            print("sismember")
+            count = redis_store.get(runner_name)
+            print(count)
+            if int(count) < FINISH_COUNT:
+                print("incrementing")
+                redis_store.incr(runner_name)
+    return jsonify({runner_name: redis_store.get(runner_name)})
+
+@frontend.route('/slapdash', methods=['GET', 'POST'])
+def show_slapdash():
+    redis_store.delete('runners')
+    redis_store.set('state', 'pre_race')
+    return render_template('slapdash.html')
 
 @frontend.route('/slapdash/init', methods=['GET','POST'])
 def init_slapdash():
     redis_store.delete('runners')
     redis_store.set('state', 'pre_race')
-    return render_template('slapdash.html',
-                            title='SlapDash')
+    return jsonify({'message': 'building field'})
+
+@frontend.route('/slapdash/start', methods=['POST'])
+def start_race():
+    redis_store.set('state', 'racing')
+    return jsonify({'message': 'starting'})
 
 @frontend.route('/slapdash/update', methods=['GET'])
 def update_slapdash():
-    print redis_store.get(runners)
+    runners = []
+    for member in redis_store.smembers('runners'):
+        runners.append({'name':member, 'pos': redis_store.get(member)})
+    return jsonify({'state': redis_store.get('state'), 'runners':runners})
 
 @frontend.route('/test_api', methods=['GET'])
 def test_api():
