@@ -1,6 +1,8 @@
 ssh apps@$DO_HOST_IP <<'ENDSSH'
 echo "Collecting security updates..."
 sudo apt-get update
+echo "Installing system updates..."
+sudo apt-get -y upgrade
 echo "Pulling latest from git..."
 cd homepage
 git pull
@@ -9,10 +11,6 @@ venv/bin/pip install --upgrade pip
 echo "Updating dependencies..."
 venv/bin/pip install -r requirements.txt --upgrade
 echo "Restarting server..."
-TWILIO_SID="ACf8ca05c046a335b7789028f35cb1d64c"
-export TWILIO_SID
-TWILIO_TOKEN="f2f6b1863787fc500b564c70c63c8989"
-export TWILIO_TOKEN
 sudo service homepage restart
 sudo service nginx restart
 echo "Done."
