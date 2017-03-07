@@ -15,6 +15,9 @@
     <script src="/static/js/bootstrap.min.js"></script>
     <script src="/static/js/moment.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% include "google_analytics.html" %}
+
   </head>
   <body>
     <div class="container">
@@ -32,7 +35,6 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li><a href="{{ url_for('frontend.index') }}">Home<span class="sr-only">(current)</span></a></li>
-            <li><a href="{{ url_for('frontend.about') }}">About<span class="sr-only">(current)</span></a></li>
           </ul>
         </div>
       </div>
