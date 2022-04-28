@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, send_file, url_for, jsonify
+from flask import render_template, flash, redirect, send_file, url_for, jsonify, safe_join
 from home import app, redis_store, twilio
 from home.frontend import frontend
 
@@ -74,5 +74,6 @@ def get_resume():
 
 @frontend.route('/download/<path:filename>')
 def download(filename):
-    flash("Downloading " + '/'.join(['static','download', filename]))
-    return send_file('/'.join(['static','download', filename]))
+    path = safe_join('static','download', filename)
+    flash("Downloading " + path)
+    return send_file(path)
